@@ -36,37 +36,33 @@ public class IsHappy {
     }
 
     // Using hashset to break the loop
-    public static boolean isHappy_hashset(int n) {
+    public static boolean usingHashset(int n) {
 
+        int initNumber = n;
         HashSet<Integer> num = new HashSet<Integer>();
-        boolean result = false;
-        boolean loop = true;
 
-        while (loop) {
+        while (n != 1) {
             n = numSquareSum(n);
 
-            if (n == 1) {
-                result = true;
-            }
             if (num.contains(n)) {
-                loop = false;
+                return false;
             }
             num.add(n);
 
         }
-        System.out.println(String.format("Was number a happy number? = %s", result));
-        return result;
+        System.out.println(String.format("The number %s is happy", initNumber));
+        return true;
     }
 
     private static int numSquareSum(int n) {
-        System.out.println(String.format("Calculating square sum of number %s", n));
+        //System.out.println(String.format("Calculating square sum of number %s", n));
         int squareSum = 0;
         while (n != 0) {
             squareSum = squareSum + ((n % 10) * (n % 10));
             n = n / 10;
 
         }
-        System.out.println(String.format("The square sum of number is = %s", squareSum));
+        //System.out.println(String.format("The square sum of number is = %s", squareSum));
         return squareSum;
     }
 }
