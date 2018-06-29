@@ -46,7 +46,7 @@ public class IsomorphicStrings {
             if (input.charAt(i) == input.charAt(i + 1)) {
                 count++;
             } else {
-                rle.append(input.charAt(i - 1));
+                rle.append(input.charAt(i + 1));
                 rle.append(count);
                 count = 1;
             }
