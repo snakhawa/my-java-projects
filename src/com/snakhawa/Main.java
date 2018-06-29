@@ -13,6 +13,7 @@ public class Main {
         IsHappy.usingHashset(19);
         HasUniqueCharacters.usingArray("1oqiw");
         //System.out.println(RemoveDuplicateCharacters.withAdditionalMemory(new char[]{'a','b'}));
+        IsomorphicStrings.isIsomorphic("qqszxx", "eefcvx");
 
     }
 }
