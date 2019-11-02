@@ -9,31 +9,7 @@ public class IsHappy {
      * Hint : Use HashSet
      */
 
-    // Fails due to infinite loop
-    public static boolean isHappy_sol1(int n) {
-        if (n == 0) return false;
-        if (n == 1) return true;
-        boolean result = false;
-
-        char[] strDigits = String.valueOf(n).toCharArray();
-        int[] arrInt = new int[strDigits.length];
-        for (int i = 0; i < strDigits.length; i++) {
-            arrInt[i] = strDigits[i] - '0';
-        }
-
-        int sumdigitSquare = 0;
-        for (int j = 0; j < arrInt.length; j++) {
-            sumdigitSquare = sumdigitSquare + (arrInt[j] * arrInt[j]);
-        }
-        if (sumdigitSquare == 1) {
-            result = true;
-        } else {
-            return isHappy_sol1(sumdigitSquare);
-        }
-
-        return result;
-
-    }
+    public static HashSet<Integer> nset = new HashSet<Integer>();
 
     // Using hashset to break the loop
     public static boolean usingHashset(int n) {
@@ -52,6 +28,22 @@ public class IsHappy {
         }
         System.out.println(String.format("The number %s is happy", initNumber));
         return true;
+    }
+
+    public static boolean usingRecur(int n){
+
+        int numSum = numSquareSum(n);
+        if(numSum == 1){
+            System.out.println(String.format("The number is happy"));
+            return true;
+        }
+        if(nset.contains(numSum)){
+            System.out.println(String.format("The number is not happy"));
+            return false;
+        }
+        nset.add(numSum);
+
+        return usingRecur(numSum);
     }
 
     private static int numSquareSum(int n) {
