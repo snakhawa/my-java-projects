@@ -1,4 +1,4 @@
-package com.snakhawa.homework;
+package com.snakhawa.homework.slidingwindow;
 
 public class DietPlanPerformance {
 
