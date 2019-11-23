@@ -7,28 +7,25 @@ public class MinimumSwap {
 
         if(arr.length < 1) return 0;
 
-        int maxOnes=0;
+        int totalOnes=0;
         for(int i: arr){
-            if(i==1) maxOnes++;
+            if(i==1) totalOnes++;
         }
 
-        int minZero =0;
-        int runZero =0;
+        int maxOnes =0;
+        int runOnes =0;
         int right =0;
 
         for(int left=right; right < arr.length; right++){
-            if(arr[right]==0) runZero++;
+            if(arr[right]==1) runOnes++;
 
-            if(right-left+1 >= maxOnes){
-                if(minZero == 0){
-                    minZero = runZero;
-                }
-                minZero = Math.min(runZero, minZero);
-                if(arr[left]==0) runZero--;
+            if(right-left+1 >= totalOnes){
+                maxOnes = Math.max(runOnes, maxOnes);
+                if(arr[left]==1) runOnes--;
                 left++;
             }
         }
-        return minZero;
+        return totalOnes - maxOnes;
     }
 
     public static int minSwaps(int[] data) {
