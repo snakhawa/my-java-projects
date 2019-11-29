@@ -2,6 +2,13 @@ package com.snakhawa.homework.slidingwindow;
 
 public class GrumpyBookstoreOwner {
 
+  /*
+    Test Cases
+    GrumpyBookstoreOwner.maxSatisfied_2(new int[]{1, 0, 1, 2, 1, 1, 7, 5}, new int[]{0, 1, 0, 1, 0, 1, 0, 1}, 3);
+    GrumpyBookstoreOwner.maxSatisfied(new int[]{4, 10, 10}, new int[]{1, 1, 0}, 2);
+    GrumpyBookstoreOwner.maxSatisfied(new int[]{2,6,6,9}, new int[]{0,0,1,1}, 1);
+   */
+
   public static int maxSatisfied(int[] customers, int[] grumpy, int X) {
 
     /*
