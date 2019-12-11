@@ -45,3 +45,23 @@ public class PalindromeLinkedList {
     return prevNode;
   }
 }
+
+/*
+Test cases
+ ListNode node01 = new ListNode(0);
+    ListNode node21 = new ListNode(2);
+    ListNode node00 = new ListNode(0);
+    ListNode node22 = new ListNode(2);
+    ListNode node02 = new ListNode(0);
+
+    node01.next = node21;
+    node21.next = node00;
+    node00.next = node22;
+    node22.next = node02;
+
+
+    //node4.next = node0;
+
+    System.out.println(PalindromeLinkedList.isPalindrome(node01));
+
+ */
