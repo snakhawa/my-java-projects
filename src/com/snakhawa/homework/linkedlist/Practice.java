@@ -1,5 +1,6 @@
 package com.snakhawa.homework.linkedlist;
 
+import java.awt.desktop.AppReopenedEvent;
 import java.util.List;
 
 public class Practice {
@@ -66,6 +67,7 @@ public class Practice {
     printNode(head);
 
   }
+
 
   /**
    * list -> [ 5 ] -> [ 4 ] -> [ 3 ] --> null
@@ -167,13 +169,14 @@ public class Practice {
 
     ListNode merged = new ListNode(0);
     ListNode cur = merged;
+    ListNode cur1 = l1;
 
     while(l1 != null && l2 != null){
       if(l1.data <= l2.data){
-        cur.next= l1;
+        cur.next= new ListNode(l1.data);
         l1 = l1.next;
       } else{
-        cur.next = l2;
+        cur.next = new ListNode(l2.data);
         l2 = l2.next;
       }
       cur = cur.next;
@@ -186,6 +189,51 @@ public class Practice {
     }
 
     printNode(merged.next);
+    printNode(cur1);
+
+  }
+
+   /* 1-> 2-> 3-> 4-> 5-> 6 -> 7 -> NULL
+
+  1-> 2-> 5->4->3 -> 6 -> 7-> NULL
+
+  Given a list and index, x, y reverse nodes only within the index
+
+  Reverse(head, 2, 4);
+  Reveres(ListNode head; int x, int j)
+  curr = head;
+  for(int i=0; i < x; i++)
+  curr = curr.next;
+  */
+
+  public static void reverse_subNodeList(ListNode head, int start, int end){
+    //ListNode head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
+    ListNode curr = head;
+    ListNode sub = curr;
+    ListNode before = curr;
+    ListNode after = curr;
+
+    for(int i=0 ;i <= end; i++){
+      ListNode currNode = head;
+      ListNode prevNode = currNode;
+      if(head != null && i == start){
+        sub = currNode;
+      }
+      if(head != null && i == end){
+        after = head.next;
+      }
+
+      head = head.next;
+    }
+
+
+    printNode(head);
+    printNode(curr);
+    printNode(sub);
+    printNode(before);
+    printNode(after);
+
+
 
   }
 
@@ -198,6 +246,20 @@ public class Practice {
       head = head.next;
     }
     System.out.println(sb.toString());
+  }
+
+  private static ListNode reverse(ListNode head){
+    ListNode prevNode = null;
+    ListNode currNode = head;
+    ListNode followNode = head;
+    while (currNode != null){
+      followNode = followNode.next;
+      currNode.next = prevNode;
+      prevNode = currNode;
+      currNode = followNode;
+    }
+
+    return currNode;
   }
 
 }
