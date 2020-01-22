@@ -14,6 +14,13 @@ import com.snakhawa.homework.linkedlist.ListNode;
  */
 public class LinkedListCycle {
 
+  /*
+    Example Node with cycle:
+    ListNode node4 = new ListNode(4);
+    ListNode node2 = new ListNode(2, node4);
+    ListNode head = new ListNode(1, node2);
+    node2.next.next = node2;
+   */
   public static Boolean hasCycle(ListNode head){
     if (head == null || head.next == null) {
       return false;
