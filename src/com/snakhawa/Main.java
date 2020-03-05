@@ -2,18 +2,13 @@ package com.snakhawa;
 
 import com.snakhawa.homework.*;
 import com.snakhawa.crackingthecode.*;
+import com.snakhawa.homework.binarySearch.BinarySearch;
 
 
 public class Main {
 
     public static void main(String[] args) {
-        //System.out.println(IsHappy.isHappy_sol1(19));
-
-        TwoSum.UsingHashMap(new int[]{2, 7, 11, 15}, 9);
-        IsHappy.usingHashset(19);
-        HasUniqueCharacters.usingArray("1oqiw");
-        //System.out.println(RemoveDuplicateCharacters.withAdditionalMemory(new char[]{'a','b'}));
-        IsomorphicStrings.isIsomorphic("a1w2e3r4", "q1w2e3r9");
+        System.out.println(BinarySearch.findPeak(new int[]{1, 6, 1, 2, 5, 4},false));
 
     }
 }
