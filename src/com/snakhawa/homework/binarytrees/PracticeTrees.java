@@ -1,5 +1,7 @@
 package com.snakhawa.homework.binarytrees;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class PracticeTrees {
@@ -41,6 +43,71 @@ public class PracticeTrees {
         TreeNode root = new TreeNode(4, t2, t6);
 
         return root;
+    }
+
+    public static boolean findTarget(TreeNode node, int target) {
+        if (node == null) return false;
+
+        if (node.val == target) return true;
+
+        if (target > node.val) {
+            return findTarget(node.right, target);
+        }
+        if (target < node.val) {
+            return findTarget(node.left, target);
+        }
+        return false;
+    }
+
+    public static TreeNode buildBST(int[] arr, int start, int end) {
+        if (start > end || isOOB(arr, start) || isOOB(arr, end)) return null;
+        int mid = start + (end - start) / 2;
+        TreeNode root = new TreeNode(arr[mid]);
+        root.left = buildBST(arr, start, mid - 1);
+        root.right = buildBST(arr, mid + 1, end);
+        return root;
+
+    }
+
+    public static boolean isOOB(int[] arr, int index) {
+        return index < 0 || index > arr.length - 1;
+    }
+
+    public static List<Integer> findRange(TreeNode root, TreeNode start, TreeNode end) {
+        if (root == null || start == null || end == null) {
+            return null;
+        }
+        List<Integer> result = new ArrayList<>();
+        TreeNode successor = findSuccessor(root, start);
+        while (successor != null && successor.val < end.val) {
+            result.add(successor.val);
+            successor = findSuccessor(root, successor);
+        }
+        return result;
+    }
+
+    public static TreeNode findSuccessor(TreeNode root, TreeNode node) {
+        if (node.right != null) {
+            TreeNode current = node.right;
+            while (current.left != null) {
+                current = current.left;
+            }
+            return current;
+        } else {
+            TreeNode successor = null;
+            TreeNode current = root;
+            while (current != null) {
+                if (current.val > node.val) {
+                    successor = current;
+                    current = current.left;
+                } else if (current.val < node.val) {
+                    current = current.right;
+                } else if (current.val == node.val) {
+                    break;
+                }
+            }
+            return successor;
+        }
     }
 
     public static int getDiameter(TreeNode root) {
@@ -117,6 +184,47 @@ public class PracticeTrees {
         printPostOrder(root.left);
         printPostOrder(root.right);
         System.out.println(root.val);
+    }
+
+    public static List<Integer> preOrderIterative(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode curr = root;
+        stack.push(curr);
+        while (!stack.isEmpty()) {
+            curr = stack.pop();
+            list.add(curr.val);
+            if (curr.right != null) {
+                stack.push(curr.right);
+            }
+            if (curr.left != null) {
+                stack.push(curr.left);
+            }
+        }
+        return list;
+
+    }
+
+    public static List<Integer> postOrderIterative(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        Stack<TreeNode> stack2 = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode curr = stack.pop();
+            stack2.push(curr);
+            if (curr.left != null) {
+                stack.push(curr.left);
+            }
+            if (curr.right != null) {
+                stack.push(curr.right);
+            }
+        }
+        while (!stack2.isEmpty()) {
+            list.add(stack2.pop().val);
+        }
+        return list;
+
     }
 
     public static boolean hasPathSum(TreeNode root, int sum) {

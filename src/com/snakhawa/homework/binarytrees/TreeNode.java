@@ -1,5 +1,7 @@
 package com.snakhawa.homework.binarytrees;
 
+import com.snakhawa.homework.linkedlist.State;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -10,17 +12,19 @@ package com.snakhawa.homework.binarytrees;
  * }
  */
 public class TreeNode {
-  int val;
-  TreeNode left;
-  TreeNode right;
+    int val;
+    TreeNode left;
+    TreeNode right;
+    State state;
 
-  TreeNode(int x) {
-    this(x, null, null);
-  }
+    public TreeNode(int x) {
+        this(x, null, null);
+    }
 
-  TreeNode(int x, TreeNode left, TreeNode right){
-    this.val = x;
-    this.left = left;
-    this.right = right;
-  }
+    public TreeNode(int x, TreeNode left, TreeNode right) {
+        this.val = x;
+        this.left = left;
+        this.right = right;
+        this.state = State.NOT_VISITED;
+    }
 }
