@@ -1,6 +1,7 @@
 package com.snakhawa.homework.recursion.auxBuffer;
 
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CoinsCombination {
 
@@ -25,23 +26,24 @@ public class CoinsCombination {
      */
     public static void printCoins(int[] coins, int target) {
         if (coins == null || coins.length == 0 || target <= 0) return;
-        printCoinsHelper(coins, target, 0, new Stack<Integer>(), 0);
+        List<Integer> buffer = new ArrayList<>(target);
+        printCoinsHelper(coins, target, 0, buffer, 0);
     }
 
-    private static void printCoinsHelper(int[] coins, int target, int startIndex, Stack<Integer> buffer, int sum) {    // termination cases
+    private static void printCoinsHelper(int[] coins, int target, int startIndex, List<Integer> buffer, int sum) {    // termination cases
         if (sum > target) {
             return;
         }
         if (sum == target) {
-            //print(buffer);
+            System.out.println(buffer.toString());
             return;
         }
         // find candidates that go into buffer
         for (int i = startIndex; i < coins.length; i++) {
             // place candidate into buffer and recurse
-            buffer.push(coins[i]);
+            buffer.add(coins[i]);
             printCoinsHelper(coins, target, i, buffer, sum + coins[i]);
-            buffer.pop();
+            buffer.remove(buffer.size() - 1);
         }
     }
 
