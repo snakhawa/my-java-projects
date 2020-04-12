@@ -6,6 +6,12 @@ import java.util.Stack;
 
 public class PracticeTrees {
 
+
+    public static void main(String[] args) {
+
+        inOrderIterative(generateBalancedTree());
+    }
+
     /**
      * Generates a sample tree
      * 4
@@ -184,6 +190,23 @@ public class PracticeTrees {
         printPostOrder(root.left);
         printPostOrder(root.right);
         System.out.println(root.val);
+    }
+
+    public static List<Integer> inOrderIterative(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode curr = root;
+        while (curr != null || !stack.isEmpty()) {
+            while (curr != null) {
+                stack.push(curr);
+                curr = curr.left;
+            }
+            curr = stack.pop();
+            list.add(curr.val);
+            curr = curr.right;
+        }
+        return list;
+
     }
 
     public static List<Integer> preOrderIterative(TreeNode root) {

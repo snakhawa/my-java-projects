@@ -5,6 +5,10 @@ import java.util.List;
 
 public class GenerateParenthesis {
 
+    public static void main(String[] args) {
+        generateParenthesis(2);
+    }
+
     public static List<String> generateParenthesis(int n) {
         List<String> ans = new ArrayList<>();
         genParenthesisHelper(ans, "", 0, 0, n);
@@ -24,5 +28,6 @@ public class GenerateParenthesis {
         if (close < open) {
             genParenthesisHelper(output, current + ")", open, close + 1, max);
         }
+        //System.out.println("open " + open + "close " + close + "current " + current);
     }
 }
