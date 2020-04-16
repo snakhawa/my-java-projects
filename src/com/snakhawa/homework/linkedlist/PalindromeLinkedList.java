@@ -35,12 +35,11 @@ public class PalindromeLinkedList {
   public static ListNode reverse(ListNode head){
     ListNode prevNode = null;
     ListNode currNode = head;
-    ListNode followNode = head;
     while (currNode != null){
-      followNode = followNode.next;
+      ListNode nextNode = currNode.next;
       currNode.next = prevNode;
       prevNode = currNode;
-      currNode = followNode;
+      currNode = nextNode;
     }
     return prevNode;
   }
