@@ -230,7 +230,30 @@ public class Practice {
         printNode(before);
         printNode(after);
 
+    }
 
+    //https://leetcode.com/problems/rotate-list/submissions/
+    public static ListNode rotateRight(ListNode head, int k) {
+
+        int length = 0;
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast.next != null) {
+            length += 1;
+            fast = fast.next;
+        }
+
+        k = k % length;
+
+        for (int i = length - k; i > 0; i--) {
+            slow = slow.next;
+        }
+
+        fast.next = head;
+        head = slow.next;
+        slow.next = null;
+
+        return head;
     }
 
     private static void printNode(ListNode head) {

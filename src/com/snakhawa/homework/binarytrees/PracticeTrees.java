@@ -9,7 +9,29 @@ public class PracticeTrees {
 
     public static void main(String[] args) {
 
-        inOrderIterative(generateBalancedTree());
+        kthSmallest(generate2NodeTree(), 2);
+    }
+
+
+    public static int kthSmallest(TreeNode root, int k) {
+
+        if (root == null) return -1;
+
+        List<Integer> inorderList = new ArrayList<>();
+        inorder(root, inorderList);
+
+        return inorderList.get(k + 1);
+
+
+    }
+
+    public static void inorder(TreeNode node, List<Integer> ans) {
+        if (node == null) return;
+
+        inorder(node.left, ans);
+        ans.add(node.val);
+        inorder(node.right, ans);
+
     }
 
     /**
