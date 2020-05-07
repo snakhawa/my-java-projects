@@ -256,7 +256,7 @@ public class Practice {
         return head;
     }
 
-    private static void printNode(ListNode head) {
+    public static void printNode(ListNode head) {
         StringBuilder sb = new StringBuilder();
 
         while (head != null) {
@@ -267,7 +267,7 @@ public class Practice {
         System.out.println(sb.toString());
     }
 
-    private static ListNode reverse(ListNode head) {
+    public static ListNode reverse(ListNode head) {
         ListNode prevNode = null;
         ListNode currNode = head;
         ListNode followNode = head;
