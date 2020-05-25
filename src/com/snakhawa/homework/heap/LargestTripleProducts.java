@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
  * You must compute a list output[0..(n-1)] such that, for each index i (between 0 and n-1, inclusive),
  * output[i] is equal to the product of the three largest elements out of arr[0..i]
  * (or equal to -1 if i < 2, as arr[0..i] then includes fewer than three elements).
- *
+ * <p>
  * Note that the three largest elements used to form any product may have the same values as one another, but they must be at different indices in arr.
  * Example 1
  * n = 5
@@ -36,15 +36,17 @@ public class LargestTripleProducts {
         // Write your code here
         int[] result = new int[arr.length];
         if (arr == null || arr.length == 0) return result;
-        PriorityQueue<Integer> maxHeap = new PriorityQueue();
+        PriorityQueue<Integer> minHeap = new PriorityQueue();
 
         for (int i = 0; i < arr.length; i++) {
-            maxHeap.add(arr[i]);
-            if (maxHeap.size() > 3) {
-                maxHeap.poll();
+            minHeap.add(arr[i]);
+            if (minHeap.size() > 3) {
+                // Remove the min value from the heap
+                // To calculate the max product
+                minHeap.poll();
             }
             if (i + 1 - 3 >= 0) {
-                result[i] = product(maxHeap);
+                result[i] = product(minHeap);
             } else {
                 result[i] = -1;
             }
